@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* CABEÇALHO */
+
+header {
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 30px;
+    border-bottom: 2px solid #1db954;
+}
+
+header img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+header h1 {
+    color: #1db954;
+    font-size: 30px;
+}
+
+/* CARROSSEL */
+
+.recentes {
+    padding: 32px 24px;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.topo h2 {
+    font-size: 1.5rem;
+}
+
+.setas {
+    display: flex;
+    gap: 8px;
+}
+
+.setas button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #2a2a2a;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.setas button:hover {
+    background: #444;
+}
+
+.setas button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.fila {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+}
+
+.fila::-webkit-scrollbar {
+    display: none;
+}
+
+/* CARDS DO CARROSSEL */
+
+.card-recente {
+    flex: 0 0 180px;
+    scroll-snap-align: start;
+    background: #181818;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.card-recente:hover {
+    background: #282828;
+}
+
+.capa {
+    position: relative;
+}
+
+.card-recente img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px #0008;
+}
+
+.card-recente h3 {
+    font-size: 1rem;
+    margin-top: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-recente p {
+    font-size: 0.85rem;
+    color: #a7a7a7;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tocar {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background: #1db954;
+    color: #000;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: 0.25s;
+    box-shadow: 0 6px 12px #0008;
+}
+
+.card-recente:hover .tocar,
+.card-recente.ativo .tocar {
+    opacity: 1;
+    transform: none;
+}
+
+.card-recente.ativo h3 {
+    color: #1db954;
+}
+
+/* TÍTULO DA BIBLIOTECA */
+
+.titulo {
+    text-align: center;
+    padding: 25px 20px;
+}
+
+.titulo h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.titulo p {
+    color: #aaa;
+}
+
+/* LISTA DE MÚSICAS */
+
+.musicas {
+    background-color: #1b1b1b;
+    margin: 20px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px #0005;
+}
+
+.musicas .card {
+    min-width: 0;
+    text-align: center;
+    background-color: #242424;
+    padding: 16px;
+    border-radius: 10px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.musicas .card:hover {
+    background-color: #303030;
+    transform: translateY(-3px);
+}
+
+.musicas .card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.musicas .card h2 {
+    font-size: 1.1rem;
+    margin: 15px 0;
+}
+
+.musicas .card p {
+    color: #ccc;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.musicas .card audio {
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* RODAPÉ */
+
+footer {
+    margin-top: 40px;
+    background-color: #000;
+    color: #1db954;
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 2px solid #1db954;
+}
+
+footer h3 {
+    margin-bottom: 12px;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #aaa;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+    .musicas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 10px 16px;
+        gap: 12px;
+    }
+
+    header img {
+        width: 70px;
+        height: 70px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .recentes {
+        padding: 24px 16px;
+    }
+
+    .topo h2 {
+        font-size: 1.15rem;
+    }
+
+    .card-recente {
+        flex-basis: 145px;
+    }
+
+    .musicas {
+        grid-template-columns: 1fr;
+        margin: 12px;
+        padding: 15px;
+        gap: 18px;
+    }
+
+    .musicas .card {
+        padding: 18px;
+    }
+
+    .musicas .card img {
+        max-width: 280px;
+    }
+
+    .titulo h2 {
+        font-size: 1.6rem;
+    }
+}
+.sem-foto {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #282828;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    color: #1db954;
+    font-size: 14px;
+    font-weight: bold;
+}
